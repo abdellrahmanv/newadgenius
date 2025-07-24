@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdGenius - Web Development for Startups</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more styling than Tailwind provides */
+        .hero-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .portfolio-overlay {
+            background: rgba(37, 99, 235, 0.9);
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-code text-2xl text-blue-600 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">AdGenius</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-800 hover:text-blue-600 font-medium">Home</a>
+                    <a href="#portfolio" class="nav-link text-gray-800 hover:text-blue-600 font-medium">Portfolio</a>
+                    <a href="#about" class="nav-link text-gray-800 hover:text-blue-600 font-medium">About</a>
+                    <a href="#contact" class="nav-link text-gray-800 hover:text-blue-600 font-medium">Contact</a>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition duration-300">Get Started</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-800 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="block py-2 text-gray-800 hover:text-blue-600">Home</a>
+                <a href="#portfolio" class="block py-2 text-gray-800 hover:text-blue-600">Portfolio</a>
+                <a href="#about" class="block py-2 text-gray-800 hover:text-blue-600">About</a>
+                <a href="#contact" class="block py-2 text-gray-800 hover:text-blue-600">Contact</a>
+                <a href="#contact" class="block mt-2 bg-blue-600 text-white px-4 py-2 rounded-md text-center">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content - Multi-page in single HTML -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="pt-0">
+            <!-- Hero Section -->
+            <div class="hero-gradient text-white py-20 md:py-32">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-10 md:mb-0">
+                            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Launch Your Startup with a Website That Converts</h1>
+                            <p class="text-xl mb-8 text-blue-100">We create high-quality websites that help new startups attract real customers and build confidence in the digital world.</p>
+                            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                                <a href="#contact" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-md font-bold text-center transition duration-300">Get Your Website Now</a>
+                                <a href="#portfolio" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-md font-bold text-center transition duration-300">See Our Work</a>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Web Development" class="rounded-lg shadow-2xl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services & Pricing Section -->
+            <div class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Website Packages</h2>
+                        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Affordable, high-quality solutions designed specifically for startups</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Single Page Website -->
+                        <div class="price-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-500 ease-in-out">
+                            <div class="px-6 py-8">
+                                <div class="text-center mb-6">
+                                    <h3 class="text-2xl font-bold mb-2">Single Page Website</h3>
+                                    <div class="flex justify-center items-baseline">
+                                        <span class="text-gray-500 line-through mr-2">$400</span>
+                                        <span class="text-4xl font-bold text-blue-600">$200</span>
+                                    </div>
+                                    <span class="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full">50% OFF - Limited Time!</span>
+                                </div>
+                                <ul class="space-y-3 mb-8">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Perfect for startups just getting started</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Responsive design</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Contact form integration</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Basic SEO optimization</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 px-6 py-4">
+                                <a href="#contact" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 px-4 rounded-md transition duration-300">Get This Package</a>
+                            </div>
+                        </div>
+
+                        <!-- Two Page Website -->
+                        <div class="price-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-500 ease-in-out">
+                            <div class="px-6 py-8 border-b-4 border-blue-600">
+                                <div class="text-center mb-6">
+                                    <span class="inline-block mb-2 px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">MOST POPULAR</span>
+                                    <h3 class="text-2xl font-bold mb-2">Two Page Website</h3>
+                                    <div class="flex justify-center items-baseline">
+                                        <span class="text-gray-500 line-through mr-2">$600</span>
+                                        <span class="text-4xl font-bold text-blue-600">$300</span>
+                                    </div>
+                                    <span class="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full">50% OFF - Limited Time!</span>
+                                </div>
+                                <ul class="space-y-3 mb-8">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Ideal for growing businesses</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Home + About/Services page</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Mobile-optimized</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Social media integration</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 px-6 py-4">
+                                <a href="#contact" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 px-4 rounded-md transition duration-300">Get This Package</a>
+                            </div>
+                        </div>
+
+                        <!-- Three+ Page Website -->
+                        <div class="price-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-500 ease-in-out">
+                            <div class="px-6 py-8">
+                                <div class="text-center mb-6">
+                                    <h3 class="text-2xl font-bold mb-2">Three+ Page Website</h3>
+                                    <div class="flex justify-center items-baseline">
+                                        <span class="text-gray-500 line-through mr-2">$800</span>
+                                        <span class="text-4xl font-bold text-blue-600">$400</span>
+                                    </div>
+                                    <span class="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full">50% OFF - Limited Time!</span>
+                                </div>
+                                <ul class="space-y-3 mb-8">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Complete business presence</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Multiple pages (Home, About, Services, etc.)</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Advanced features</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Full SEO package</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 px-6 py-4">
+                                <a href="#contact" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 px-4 rounded-md transition duration-300">Get This Package</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us Section -->
+            <div class="py-20">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose AdGenius?</h2>
+                        <p class="text-xl text-gray-600 max-w-2xl mx-auto">We're not just developers - we're startup partners</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-blue-600 mb-4">
+                                <i class="fas fa-rocket text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Startup-Focused Expertise</h3>
+                            <p class="text-gray-600">We understand the unique challenges startups face and design solutions specifically for your needs.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-blue-600 mb-4">
+                                <i class="fas fa-paint-brush text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">High-Quality Designs</h3>
+                            <p class="text-gray-600">Professional, modern designs that make your startup look established and trustworthy.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-blue-600 mb-4">
+                                <i class="fas fa-mobile-alt text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Mobile-Responsive</h3>
+                            <p class="text-gray-600">Every website we build looks and works perfectly on all devices, from phones to desktops.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-blue-600 mb-4">
+                                <i class="fas fa-bolt text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Fast Turnaround</h3>
+                            <p class="text-gray-600">We know startups move fast. We deliver quality websites quickly to match your pace.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-blue-600 mb-4">
+                                <i class="fas fa-headset text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Ongoing Support</h3>
+                            <p class="text-gray-600">We don't just build and leave. We provide support to ensure your website grows with your business.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-blue-600 mb-4">
+                                <i class="fas fa-tags text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Affordable Pricing</h3>
+                            <p class="text-gray-600">Special pricing for startups to help you establish your online presence without breaking the bank.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form Section -->
+            <div id="contact" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+                            <p class="text-xl text-gray-600">Let's connect and discuss how we can help your startup succeed online.</p>
+                        </div>
+                        <form action="https://formspree.io/f/myzjooqd" method="POST" class="bg-white rounded-lg shadow-lg p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-gray-700 font-medium mb-2">Full Name *</label>
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="company" class="block text-gray-700 font-medium mb-2">Company/Startup Name</label>
+                                    <input type="text" id="company" name="company" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="package" class="block text-gray-700 font-medium mb-2">Website Package Interest</label>
+                                    <select id="package" name="package" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Select a package</option>
+                                        <option value="Single Page Website">Single Page Website ($200)</option>
+                                        <option value="Two Page Website">Two Page Website ($300)</option>
+                                        <option value="Three+ Page Website">Three+ Page Website ($400)</option>
+                                        <option value="Custom Solution">Custom Solution</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="timeline" class="block text-gray-700 font-medium mb-2">Preferred Timeline</label>
+                                    <select id="timeline" name="timeline" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Select timeline</option>
+                                        <option value="ASAP">ASAP</option>
+                                        <option value="1-2 weeks">1-2 weeks</option>
+                                        <option value="2-4 weeks">2-4 weeks</option>
+                                        <option value="1+ months">1+ months</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="description" class="block text-gray-700 font-medium mb-2">Project Description *</label>
+                                <textarea id="description" name="description" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <div class="mt-8">
+                                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition duration-300">Send My Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Page -->
+        <section id="portfolio" class="hidden py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Our Work</h1>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">See how we've helped other startups succeed</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project 1 -->
+                    <div class="portfolio-item bg-white rounded-lg overflow-hidden shadow-lg relative">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Lisbon Project" class="w-full h-full object-cover">
+                        </div>
+                        <div class="portfolio-overlay absolute inset-0 flex items-center justify-center opacity-0">
+                            <div class="text-center p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-2">Lisbon</h3>
+                                <p class="mb-4">Modern travel and tourism website</p>
+                                <div class="flex justify-center space-x-2 mb-4">
+                                    <span class="bg-blue-700 text-xs px-2 py-1 rounded">HTML</span>
+                                    <span class="bg-blue-700 text-xs px-2 py-1 rounded">CSS</span>
+                                    <span class="bg-blue-700 text-xs px-2 py-1 rounded">JavaScript</span>
+                                </div>
+                                <a href="https://abdellrahmanv.github.io/lisbon/" target="_blank" class="inline-block bg-white text-blue-600 hover:bg-gray-100 px-6 py-2 rounded-md font-bold transition duration-300">View Live Site</a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Lisbon</h3>
+                            <p class="text-gray-600 mb-4">Modern travel and tourism website</p>
+                            <a href="https://abdellrahmanv.github.io/lisbon/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">View Live Site →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="portfolio-item bg-white rounded-lg overflow-hidden shadow-lg relative">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Florista Project" class="w-full h-full object-cover">
+                        </div>
+                        <div class="portfolio-overlay absolute inset-0 flex items-center justify-center opacity-0">
+                            <div class="text-center p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-2">Florista</h3>
+                                <p class="mb-4">Beautiful floral business website</p>
+                                <div class="flex justify-center space-x-2 mb-4">
+                                    <span class="bg-blue-700 text-xs px-2 py-1 rounded">HTML</span>
+                                    <span class="bg-blue-700 text-xs px-2 py-1 rounded">CSS</span>
+                                    <span class="bg-blue-700 text-xs px-2 py-1 rounded">JavaScript</span>
+                                </div>
+                                <a href="https://abdellrahmanv.github.io/florista/" target="_blank" class="inline-block bg-white text-blue-600 hover:bg-gray-100 px-6 py-2 rounded-md font-bold transition duration-300">View Live Site</a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Florista</h3>
+                            <p class="text-gray-600 mb-4">Beautiful floral business website</p>
+                            <a href="https://abdellrahmanv.github.io/florista/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">View Live Site →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-16">
+                    <h3 class="text-2xl font-bold mb-6">Ready to join our success stories?</h3>
+                    <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-bold transition duration-300">Get Started Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="hidden py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">About AdGenius</h1>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Helping startups establish a powerful online presence</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <!-- Company Story -->
+                    <div class="mb-16">
+                        <h2 class="text-2xl font-bold mb-6 text-center">Our Story</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="text-blue-600 mb-4 text-center">
+                                    <i class="fas fa-bullseye text-3xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3 text-center">Mission</h3>
+                                <p class="text-gray-600">To help startups establish a strong web presence that builds credibility, attracts customers, and drives business growth.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="text-blue-600 mb-4 text-center">
+                                    <i class="fas fa-eye text-3xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3 text-center">Vision</h3>
+                                <p class="text-gray-600">Empowering new businesses to compete confidently online with professional, affordable web solutions.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="text-blue-600 mb-4 text-center">
+                                    <i class="fas fa-heart text-3xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3 text-center">Values</h3>
+                                <p class="text-gray-600">Quality craftsmanship, startup-friendly pricing, personalized service, and long-term partnerships.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Our Approach -->
+                    <div class="mb-16">
+                        <h2 class="text-2xl font-bold mb-8 text-center">Our Approach</h2>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="md:flex">
+                                <div class="md:w-1/2">
+                                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Our Approach" class="w-full h-full object-cover">
+                                </div>
+                                <div class="md:w-1/2 p-8">
+                                    <ul class="space-y-6">
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 bg-blue-100 rounded-full p-2 mr-4">
+                                                <i class="fas fa-lightbulb text-blue-600"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-bold mb-1">Understanding Startup Challenges</h3>
+                                                <p class="text-gray-600">We take time to understand your unique business needs and target audience.</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 bg-blue-100 rounded-full p-2 mr-4">
+                                                <i class="fas fa-chart-line text-blue-600"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-bold mb-1">Conversion-Focused Design</h3>
+                                                <p class="text-gray-600">We create websites that don't just look good - they convert visitors to customers.</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 bg-blue-100 rounded-full p-2 mr-4">
+                                                <i class="fas fa-shield-alt text-blue-600"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-bold mb-1">Building Confidence</h3>
+                                                <p class="text-gray-600">Your website is often the first impression. We make sure it's a professional one.</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 bg-blue-100 rounded-full p-2 mr-4">
+                                                <i class="fas fa-hands-helping text-blue-600"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-bold mb-1">Ongoing Partnership</h3>
+                                                <p class="text-gray-600">We provide support and guidance as your business grows and evolves.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Why Startups -->
+                    <div class="mb-16">
+                        <h2 class="text-2xl font-bold mb-8 text-center">Why We Focus on Startups</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="bg-white p-8 rounded-lg shadow-md">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-brain text-blue-600"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold">Specialized Understanding</h3>
+                                </div>
+                                <p class="text-gray-600">We've worked with dozens of startups and understand the unique challenges you face in establishing credibility and attracting early customers.</p>
+                            </div>
+                            <div class="bg-white p-8 rounded-lg shadow-md">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-wallet text-blue-600"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold">Flexible Pricing</h3>
+                                </div>
+                                <p class="text-gray-600">We offer startup-friendly pricing with options that scale with your business, so you can establish a professional presence without overspending.</p>
+                            </div>
+                            <div class="bg-white p-8 rounded-lg shadow-md">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-stopwatch text-blue-600"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold">Quick Turnaround</h3>
+                                </div>
+                                <p class="text-gray-600">Startups move fast, and so do we. Our streamlined process gets your website live quickly so you can start attracting customers.</p>
+                            </div>
+                            <div class="bg-white p-8 rounded-lg shadow-md">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-expand text-blue-600"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold">Scalable Solutions</h3>
+                                </div>
+                                <p class="text-gray-600">We build websites that can grow with your business, making it easy to add features and content as your needs evolve.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-6">Ready to transform your startup's online presence?</h3>
+                        <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-bold transition duration-300">Get Started Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-2xl text-blue-400 mr-2"></i>
+                        <span class="text-xl font-bold">AdGenius</span>
+                    </div>
+                    <p class="text-gray-400">Helping startups establish professional, high-converting websites that build credibility and attract customers.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-white transition duration-300">Portfolio</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Single Page Websites</a></li>
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Two Page Websites</a></li>
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Multi-Page Websites</a></li>
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                    <p class="text-gray-400">Email: hello@adgenius.com</p>
+                    <p class="text-gray-400">Phone: (123) 456-7890</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 AdGenius. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Simple page navigation (single page app style)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#home') {
+                    document.getElementById('home').classList.remove('hidden');
+                    document.getElementById('portfolio').classList.add('hidden');
+                    document.getElementById('about').classList.add('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (targetId === '#portfolio') {
+                    document.getElementById('home').classList.add('hidden');
+                    document.getElementById('portfolio').classList.remove('hidden');
+                    document.getElementById('about').classList.add('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (targetId === '#about') {
+                    document.getElementById('home').classList.add('hidden');
+                    document.getElementById('portfolio').classList.add('hidden');
+                    document.getElementById('about').classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (targetId === '#contact') {
+                    document.getElementById('home').classList.remove('hidden');
+                    document.getElementById('portfolio').classList.add('hidden');
+                    document.getElementById('about').classList.add('hidden');
+                    const contactSection = document.getElementById('contact');
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Form validation
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                const requiredFields = this.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('border-red-500');
+                        isValid = false;
+                    } else {
+                        field.classList.remove('border-red-500');
+                    }
+                });
+                
+                if (!isValid) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
